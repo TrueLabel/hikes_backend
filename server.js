@@ -1,0 +1,58 @@
+const express = require('express');
+const mongoose = require('mongoose')
+const cors = require('cors')
+const Hikes = require('./models/state_hikes.js')
+const app = express();
+app.use(express.json())
+app.use(cors())
+//////////////////////////////////////////////////////////////
+// Routes Start
+//////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////
+// Post / Create Route
+//////////////////////////////////////////////////////////////
+app.post('/state_hikes', (req, res)=>{
+  Hikes.create(req.body, (err, createdHike) => {
+      res.json(createdHike);
+  })
+});
+
+
+//////////////////////////////////////////////////////////////
+// View / Get Route
+//////////////////////////////////////////////////////////////
+app.get('/state_hikes', (req, res) => {
+    Hikes.find({}, (err, findHike) => {
+        res.json(findHike)
+    })
+});
+
+//////////////////////////////////////////////////////////////
+// Delete Route
+//////////////////////////////////////////////////////////////
+app.delete('/state_hikes/:id', (req, res) => {
+    Hikes.findByIdAndRemove(req.params.id, (err, deleteHike) => {
+      res.json(deleteHike)
+    })
+});
+
+//////////////////////////////////////////////////////////////
+// Put / update/edit Route
+//////////////////////////////////////////////////////////////
+app.put('/state_hikes/:id', (req, res) => {
+    Hikes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateHike) => {
+      res.json(updateHike)
+    })
+});
+
+//////////////////////////////////////////////////////////////
+// Routes End
+//////////////////////////////////////////////////////////////
+mongoose.connect('mongodb://localhost:27017/state_hikes')
+mongoose.connection.once('open', () => {
+    console.log('connected to mongodb...');
+})
+app.listen(3000, () => {
+  console.log('listening...');
+})
