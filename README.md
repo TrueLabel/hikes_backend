@@ -1,2 +1,5 @@
 # hikes_backend
 Backend Project 3 | Amie Morales &amp; Zane Fink
+
+## Clone setup
+  Testing push and pull
