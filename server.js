@@ -5,6 +5,8 @@ const Hikes = require('./models/state_hikes.js')
 const app = express();
 app.use(express.json())
 app.use(cors())
+require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it working
 //////////////////////////////////////////////////////////////
 // Routes Start
 //////////////////////////////////////////////////////////////
