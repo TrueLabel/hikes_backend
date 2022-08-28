@@ -51,7 +51,10 @@ app.put('/state_hikes/:id', (req, res) => {
 //////////////////////////////////////////////////////////////
 // Routes End
 //////////////////////////////////////////////////////////////
-mongoose.connect('mongodb://localhost:27017/state_hikes')
+const PORT = process.env.PORT || 3003;
+const MONGODB_URI = process.env.MONGODB_URI;
+
+mongoose.connect(MONGODB_URI)
 mongoose.connection.once('open', () => {
     console.log('connected to mongodb...');
 })
