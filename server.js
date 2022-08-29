@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(cors())
 require('dotenv').config()
 console.log(process.env) // remove this after you've confirmed it working
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 const db = mongoose.connection
 
@@ -60,7 +60,7 @@ mongoose.connect(MONGODB_URI)
 mongoose.connection.once('open', () => {
     console.log('connected to mongodb...');
 })
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('listening...');
 })
 
