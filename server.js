@@ -24,11 +24,28 @@ const db = mongoose.connection
 // })
 
 
+// app.post('/state_hikes', (req, res)=>{
+//   Hikes.create(req.body, (err, createdHike) => {
+//       res.json(createdHike);
+//   })
+// });
+
 app.post('/state_hikes', (req, res)=>{
-  Hikes.create(req.body, (err, createdHike) => {
+  Hikes.create({
+    name: req.body.name,
+    state: req.body.state,
+    city: req.body.city,
+    description: req.body.description,
+    length: req.body.length,
+    elevationGain: req.body.elevationGain,
+    difficulty: req.body.difficulty,
+    imageArray: req.body.imageArray.split(','),
+    hiked: req.body.hiked
+  }, (err, createdHike) => {
       res.json(createdHike);
   })
 });
+
 
 
 //////////////////////////////////////////////////////////////
