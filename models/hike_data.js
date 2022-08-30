@@ -1155,17 +1155,6 @@ module.exports = [
     hiked: false
 },
 {
-    name: "",
-    state: "New Hampshire",
-    city: "",
-    description: "",
-    length: "",
-    elevationGain: "",
-    difficulty: "",
-    imageArray: "",
-    hiked: false
-},
-{
     name: "Mount Willard Trail",
     state: "New Hampshire",
     city: "Bretton Woods,",
