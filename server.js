@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose')
 const cors = require('cors')
 const Hikes = require('./models/state_hikes.js')
+const hikeData = require('./models/hike_data.js')
 const app = express();
 app.use(express.json())
 app.use(cors())
@@ -18,11 +19,33 @@ const db = mongoose.connection
 //////////////////////////////////////////////////////////////
 // Post / Create Route
 //////////////////////////////////////////////////////////////
+// Hikes.create(hikeData, (err, addHikes) =>{
+//   console.log('Hikes added.')
+// })
+
+
+// app.post('/state_hikes', (req, res)=>{
+//   Hikes.create(req.body, (err, createdHike) => {
+//       res.json(createdHike);
+//   })
+// });
+
 app.post('/state_hikes', (req, res)=>{
-  Hikes.create(req.body, (err, createdHike) => {
+  Hikes.create({
+    name: req.body.name,
+    state: req.body.state,
+    city: req.body.city,
+    description: req.body.description,
+    length: req.body.length,
+    elevationGain: req.body.elevationGain,
+    difficulty: req.body.difficulty,
+    imageArray: req.body.imageArray.split(','),
+    hiked: req.body.hiked
+  }, (err, createdHike) => {
       res.json(createdHike);
   })
 });
+
 
 
 //////////////////////////////////////////////////////////////
