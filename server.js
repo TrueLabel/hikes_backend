@@ -70,16 +70,16 @@ app.delete('/state_hikes/:id', (req, res) => {
 // Put / update/edit Route
 //////////////////////////////////////////////////////////////
 app.put('/state_hikes/:id', (req, res) => {
-      Hikes.findByIdAndUpdate(req.params.id, name: req.body.name)
-      Hikes.findByIdAndUpdate(req.params.id, name: req.body.name)
-      Hikes.findByIdAndUpdate(req.params.id, state: req.body.state)
-      Hikes.findByIdAndUpdate(req.params.id, city: req.body.city)
-      Hikes.findByIdAndUpdate(req.params.id, description: req.body.description)
-      Hikes.findByIdAndUpdate(req.params.id, length: req.body.length)
-      Hikes.findByIdAndUpdate(req.params.id, elevationGain: req.body.elevationGain)
-      Hikes.findByIdAndUpdate(req.params.id, difficulty: req.body.difficulty)
-      Hikes.findByIdAndUpdate(req.params.id, imageArray: req.body.imageArray.split(','))
-      Hikes.findByIdAndUpdate(req.params.id, hiked: req.body.hiked)
+    Hikes.findByIdAndUpdate(req.params.id, {
+      name: req.body.name,
+      state: req.body.state,
+      city: req.body.city,
+      description: req.body.description,
+      length: req.body.length,
+      elevationGain: req.body.elevationGain,
+      difficulty: req.body.difficulty,
+      imageArray: req.body.imageArray.split(','),
+      hiked: req.body.hiked
     }, {new:true}, (err, updateHike) => {
       res.json(updateHike)
     })
