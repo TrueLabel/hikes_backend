@@ -70,17 +70,7 @@ app.delete('/state_hikes/:id', (req, res) => {
 // Put / update/edit Route
 //////////////////////////////////////////////////////////////
 app.put('/state_hikes/:id', (req, res) => {
-    Hikes.findByIdAndUpdate(req.params.id, {
-      name: req.body.name,
-      state: req.body.state,
-      city: req.body.city,
-      description: req.body.description,
-      length: req.body.length,
-      elevationGain: req.body.elevationGain,
-      difficulty: req.body.difficulty,
-      // imageArray: req.body.imageArray.split(','),
-      hiked: req.body.hiked
-    }, {new:true}, (err, updateHike) => {
+    Hikes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateHike) => {
       res.json(updateHike)
     })
 });
