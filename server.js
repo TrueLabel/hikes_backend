@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(cors())
 require('dotenv').config()
 console.log(process.env) // remove this after you've confirmed it working
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 const db = mongoose.connection
 
@@ -70,7 +70,17 @@ app.delete('/state_hikes/:id', (req, res) => {
 // Put / update/edit Route
 //////////////////////////////////////////////////////////////
 app.put('/state_hikes/:id', (req, res) => {
-    Hikes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updateHike) => {
+    Hikes.findByIdAndUpdate(req.params.id, {
+      name: req.body.name,
+      state: req.body.state,
+      city: req.body.city,
+      description: req.body.description,
+      length: req.body.length,
+      elevationGain: req.body.elevationGain,
+      difficulty: req.body.difficulty,
+      imageArray: req.body.imageArray.split(','),
+      hiked: req.body.hiked
+    }, {new:true}, (err, updateHike) => {
       res.json(updateHike)
     })
 });
@@ -83,7 +93,7 @@ mongoose.connect(MONGODB_URI)
 mongoose.connection.once('open', () => {
     console.log('connected to mongodb...');
 })
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('listening...');
 })
 
