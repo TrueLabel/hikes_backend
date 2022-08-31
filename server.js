@@ -78,7 +78,7 @@ app.put('/state_hikes/:id', (req, res) => {
       length: req.body.length,
       elevationGain: req.body.elevationGain,
       difficulty: req.body.difficulty,
-      imageArray: req.body.imageArray.split(','),
+      // imageArray: req.body.imageArray.split(','),
       hiked: req.body.hiked
     }, {new:true}, (err, updateHike) => {
       res.json(updateHike)
