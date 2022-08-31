@@ -6,7 +6,7 @@ const hikeSchema = new mongoose.Schema(
   state: String,
   city: String,
   description: String,
-  length: Number,
+  length: Float,
   elevationGain: Number,
   difficulty: String,
   imageArray: [String],
