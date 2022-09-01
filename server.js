@@ -67,6 +67,15 @@ app.delete('/state_hikes/:id', (req, res) => {
 });
 
 //////////////////////////////////////////////////////////////
+// Image Array update / Put
+//////////////////////////////////////////////////////////////
+app.put('/state_hikes/:id', (req, res) => {
+    Hikes.findByIdAndUpdate(req.params.id, req.body.imageArray.split(','), {new:true}, (err, updateHike) => {
+      res.json(updateHike)
+    })
+});
+
+//////////////////////////////////////////////////////////////
 // Put / update/edit Route
 //////////////////////////////////////////////////////////////
 app.put('/state_hikes/:id', (req, res) => {
