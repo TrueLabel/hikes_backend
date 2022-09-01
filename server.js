@@ -39,7 +39,7 @@ app.post('/state_hikes', (req, res)=>{
     length: req.body.length,
     elevationGain: req.body.elevationGain,
     difficulty: req.body.difficulty,
-    imageArray: req.body.imageArray.split(' '),
+    imageArray: req.body.imageArray.split(','),
     hiked: req.body.hiked
   }, (err, createdHike) => {
       res.json(createdHike);
