@@ -11,8 +11,8 @@ const hikeSchema = new mongoose.Schema(
   difficulty: String,
   imageArray: [String],
   hiked: Boolean,
-  lat: String,
-  lng: String
+  lat: Number,
+  lng: Number
 }
 );
 
